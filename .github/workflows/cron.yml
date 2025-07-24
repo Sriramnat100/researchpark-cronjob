@@ -1,0 +1,34 @@
+name: Daily Job Scraping
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # Daily at 9 AM UTC
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          
+      - name: Install Playwright browsers
+        run: |
+          playwright install chromium
+          
+      - name: Run job scraper
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          ANON_KEY: ${{ secrets.ANON_KEY }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        run: python extractor.py 
