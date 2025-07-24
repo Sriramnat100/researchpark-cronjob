@@ -1,0 +1,11 @@
+# Environment Variables Template
+# Copy this to a .env file and fill in your actual values
+
+# Supabase Configuration
+# Get these from your Supabase project dashboard
+SUPABASE_URL=https://your-project-id.supabase.co
+ANON_KEY=your_supabase_anon_key_here
+
+# Email Configuration
+# This is the password for the email account that will send notifications
+EMAIL_PASSWORD=your_email_password_here 

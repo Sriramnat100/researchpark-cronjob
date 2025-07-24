@@ -1,0 +1,6 @@
+Flask
+supabase
+pandas
+beautifulsoup4
+playwright
+python-dotenv
